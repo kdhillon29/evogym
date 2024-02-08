@@ -1,9 +1,9 @@
-import "./App.css";
-
 function App() {
   return (
     <>
-      <div className="flex">Hello World</div>
+      <div className="app  bg-gray-20  ">
+        <h2 className="">Hello World23</h2>
+      </div>
     </>
   );
 }
