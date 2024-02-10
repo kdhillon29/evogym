@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { SelectedPage } from "./shared/types";
 import Home from "./components/home";
 import Benefits from "./components/benefits";
+import OurClasses from "./components/ourClasses";
+import ContactUs from "./components/ContactUs";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -21,6 +23,7 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <>
       <div className="app  bg-gray-20  ">
@@ -31,6 +34,8 @@ function App() {
         />
         <Home setSelectedPage={setSelectedPage} />
         <Benefits setSelectedPage={setSelectedPage} />
+        <OurClasses setSelectedPage={setSelectedPage} />
+        <ContactUs setSelectedPage={setSelectedPage} />
       </div>
     </>
   );

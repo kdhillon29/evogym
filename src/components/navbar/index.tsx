@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "@/assets/Logo.png";
 import Link from "./Link";
@@ -17,11 +17,28 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
+  // const navRef:React.MutableRefObject<HTMLDivElement> = useRef();
+  const navRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  useEffect(() => {
+    const menuToggled = () => {
+      console.log("nav clicked");
+      if (isMenuToggled === true) {
+        console.log("menu on");
+        setIsMenuToggled(false);
+      }
+    };
+    navRef.current.addEventListener("click", menuToggled);
+
+    return () => {
+      // second
+      navRef.current.removeEventListener("click", menuToggled);
+    };
+  }, [isMenuToggled]);
 
   return (
-    <nav>
+    <nav ref={navRef}>
       <div
-        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6`}
+        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6 transition-all duration-500`}
       >
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
@@ -74,7 +91,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
 
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
-        <div className="fixed bottom-0 right-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+        <div className="fixed bottom-0 right-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl transition-all duration-500">
           {/* CLOSE ICON */}
           <div className="flex justify-end p-12">
             <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
@@ -83,7 +100,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           </div>
 
           {/* MENU ITEMS */}
-          <div className="ml-[33%] flex flex-col gap-10 text-2xl">
+          <div className="ml-[33%] flex flex-col gap-6 text-2xl ">
             <Link
               page="Home"
               selectedPage={selectedPage}
