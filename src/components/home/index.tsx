@@ -18,7 +18,7 @@ const Home = ({ setSelectedPage }: Props) => {
   return (
     <section
       id="home"
-      className=" border-secondary-200 gap-16 border-t-4 border-primary-500 bg-gray-20 py-10 md:h-full  md:pb-0 "
+      className=" gap-16 border-t-4 border-primary-500 bg-gray-20 bg-gradient-yellowred py-10 md:h-full  md:pb-0 "
     >
       {/* IMAGE AND MAIN HEADER */}
       <motion.div
@@ -45,7 +45,7 @@ const Home = ({ setSelectedPage }: Props) => {
               </div>
             </div>
 
-            <p className="mt-8 text-sm">
+            <p className="mt-4 text-pretty text-justify text-sm text-white">
               Unrivaled Gym. Unparalleled Training Fitness Classes. World Class
               Studios to get the Body Shapes That you Dream of.. Get Your Dream
               Body Now.
@@ -68,7 +68,7 @@ const Home = ({ setSelectedPage }: Props) => {
               Join Now
             </ActionButton>
             <AnchorLink
-              className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
+              className="text-sm  font-bold text-yellow-500 underline hover:text-secondary-500"
               onClick={() => setSelectedPage(SelectedPage.ContactUs)}
               href={`#${SelectedPage.ContactUs}`}
             >
