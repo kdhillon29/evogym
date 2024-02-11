@@ -53,7 +53,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
         </motion.div>
 
         {/* FORM AND IMAGE */}
-        <div className="mt-10 justify-between gap-8 md:flex">
+        <div className="mt-10 flex flex-col justify-between gap-2 sm:flex-row">
           <motion.div
             className="mt-10 basis-3/5 md:mt-0"
             initial="hidden"
@@ -134,7 +134,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           </motion.div>
 
           <motion.div
-            className="relative mt-16 basis-2/5 md:mt-0"
+            className="relative mt-8 flex-shrink basis-3/5 md:mt-0"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
