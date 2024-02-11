@@ -18,27 +18,31 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
   // const navRef:React.MutableRefObject<HTMLDivElement> = useRef();
-  const navRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const navRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   useEffect(() => {
-    const menuToggled = () => {
+    function menuToggled() {
       console.log("nav clicked");
       if (isMenuToggled === true) {
         console.log("menu on");
         setIsMenuToggled(false);
       }
-    };
-    navRef.current.addEventListener("click", menuToggled);
+    }
+    const myTimeOut = window.setTimeout(menuToggled, 2000);
+
+    navRef.current
+      ? navRef.current.addEventListener("click", () => myTimeOut)
+      : "";
 
     return () => {
       // second
-      navRef.current.removeEventListener("click", menuToggled);
+      clearTimeout(myTimeOut);
     };
   }, [isMenuToggled]);
 
   return (
-    <nav ref={navRef}>
+    <nav>
       <div
-        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6 transition-all duration-500`}
+        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6`}
       >
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
@@ -91,7 +95,10 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
 
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
-        <div className="fixed bottom-0 right-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl transition-all duration-500">
+        <div
+          ref={navRef}
+          className="fixed bottom-0 right-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl transition-all duration-500"
+        >
           {/* CLOSE ICON */}
           <div className="flex justify-end p-12">
             <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
@@ -105,21 +112,25 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               page="Home"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              // setIsMenuToggled={setIsMenuToggled}
             />
             <Link
               page="Benefits"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              // setIsMenuToggled={setIsMenuToggled}
             />
             <Link
               page="Our Classes"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              // setIsMenuToggled={setIsMenuToggled}
             />
             <Link
               page="Contact Us"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              // setIsMenuToggled={setIsMenuToggled}
             />
           </div>
         </div>
