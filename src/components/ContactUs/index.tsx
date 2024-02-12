@@ -134,7 +134,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           </motion.div>
 
           <motion.div
-            className="relative mt-8 flex-shrink basis-3/5 md:mt-0"
+            className="relative mt-8 flex-shrink basis-2/5 md:mt-0"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -146,7 +146,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           >
             <div className="w-full before:absolute before:-bottom-20 before:-right-10 before:z-[-1] md:before:content-evolvetext">
               <img
-                className="w-full"
+                className="w-full "
                 alt="contact-us-page-graphic"
                 src={ContactUsPageGraphic}
               />
