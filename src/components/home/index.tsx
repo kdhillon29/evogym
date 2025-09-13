@@ -53,7 +53,7 @@ const Home = ({ setSelectedPage }: Props) => {
 
           {/* ACTIONS */}
           <motion.div
-            className="mt-8 flex items-center gap-8"
+            className="mt-8 flex items-center gap-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -67,7 +67,7 @@ const Home = ({ setSelectedPage }: Props) => {
               Join Now
             </ActionButton>
             <AnchorLink
-              className="text-sm  font-bold text-yellow-500 underline hover:text-secondary-500"
+              className="text-md  font-bold text-yellow-200 underline hover:text-secondary-500"
               onClick={() => setSelectedPage(SelectedPage.ContactUs)}
               href={`#${SelectedPage.ContactUs}`}
             >
